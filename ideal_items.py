@@ -9,3 +9,4 @@ def item_list():
     'cosmic brownies': 1, 'm&m cookies': 1, 'ritz toasted chips': 1, 'animal crackers': 1, 'muffin bites': 5, 'brownie bites': 5,
     'ritz crackers': 8, 'milanos': 2, 'oreos': 1, 'cheese-itz': 1, 'donuts': 2, 'ice cream (fudge swirl)': 1, 'steak': 1,
     '4-pack boneless chicken': 2, '4-pack boneless pork chops': 2, 'ground beef': 2}
+    return ideal_items_list
