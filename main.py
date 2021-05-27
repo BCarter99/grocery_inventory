@@ -1,36 +1,9 @@
 import email, smtplib, ssl, os
 from ideal_items import item_list
 from dotenv import load_dotenv
+from datetime import date
 
 load_dotenv()
-
-
-def send_sms_via_email(
-    number:str,
-    message:str,
-    provider:str,
-    sender_credentials:tuple,
-    subject:str = 'sent using python',
-    smtp_server:str = 'smtp.gmail.com',
-    smtp_port:int = 465
-):
-    sender_email, email_password = sender_credentials
-    receiver_email = f'{number}@tmomail.net'
-
-    email_message = f'Subject:{subject}\nTo:{receiver_email}\n{message}'
-
-    with smtplib.SMTP_SSL(smtp_server, smtp_port, context=ssl.create_default_context()) as email:
-        email.login(sender_email, email_password)
-        email.sendmail(sender_email, receiver_email, email_message)
-
-def email_setup(text_message):
-    number = '6037814883'
-    message = text_message
-    provider = 'T-Mobile'
-    sender_credentials = (os.getenv('EMAIL'), os.getenv('PASSWORD'))
-
-    send_sms_via_email(number, message, provider, sender_credentials)
-
 
 
 ideal_items = item_list()
@@ -55,8 +28,5 @@ for item, current_amount in on_hand_items.items():
     else:
         continue
 
-text_message = ''
 for item, value in items_to_buy.items():
-    text_message += f'{item}: {value}\n'
-
-email_setup(str(text_message))
+    print(f'{item}: {value}\n')
